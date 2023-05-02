@@ -1,1 +1,5 @@
-# IT202-008
+IT202-008
+
+Grimm Cato
+
+Current IT MAJOR
