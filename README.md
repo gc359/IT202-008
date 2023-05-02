@@ -2,4 +2,4 @@ IT202-008
 
 Grimm Cato
 
-IT MAJOR
+Current IT MAJOR
