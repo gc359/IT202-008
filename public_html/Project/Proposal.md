@@ -1,4 +1,4 @@
-# Project Name: (Which Project)
+# Project Name: Bank
 ## Project Summary: (Copy from proposal)
 ## Github Link: (Prod Branch of Project Folder)
 ## Project Board Link: 
@@ -10,7 +10,16 @@
 ### Proposal Checklist and Evidence
 
 - Milestone 1
-  - (add link to milestone1.md from milestone1 branch)  
+  - (5/4/2023 day of completion) Feature Title: User will be able to register a new account
+  - (5/4/2023 day of completion) Feature Title: User will be able to login to their account (given they enter the correct credentials)
+  - (5/4/2023 day of completion) Feature Title: User will be able to logout
+  - (5/4/2023 day of completion) Feature Title: Basic security rules implemented
+  - (5/4/2023 day of completion) Feature Title: Basic Roles implemented
+  - (5/4/2023 day of completion) Feature Title: Site should have basic styles/theme applied; everything should be styled
+  - (5/4/2023 day of completion) Feature Title: Any output messages/errors should be “user friendly”
+  - (5/4/2023 day of completion) Feature Title: User will be able to see their profile
+  - (5/4/2023 day of completion) Feature Title: User will be able to edit their profile
+  - https://github.com/gc359/IT202-008/blob/Milestone1/public_html/Project/milestone1.md
 - Milestone 2
   - (add link to milestone2.md from milestone2 branch)
 - Milestone 3
