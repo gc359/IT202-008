@@ -1,0 +1,33 @@
+.alert-success {
+    background-color: green;
+}
+
+.alert-warning {
+    background-color: yellow;
+}
+
+.alert-danger {
+    background-color: red;
+}
+
+.alert-info {
+    background-color: teal;
+}
+
+nav li {
+    display: inline;
+    background-color: transparent; /* change the background color to transparent */
+}
+
+nav li a {
+    color: black; /* change the text color to black */
+}
+
+input {
+    border-radius: 0; /* change the border radius to 0 to get square containers */
+}
+
+body {
+    background-color: white; /* change the background color to white */
+    color: black; /* change the text color to black */
+}
