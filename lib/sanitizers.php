@@ -6,4 +6,3 @@ function sanitize_email($email = "") {
 function is_valid_email($email = "") {
     return filter_var(trim($email), FILTER_VALIDATE_EMAIL);
 }
-?>
