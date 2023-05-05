@@ -110,8 +110,24 @@ $email = get_user_email();
 $username = get_username();
 $firstName = get_user_first_name();
 $lastName = get_user_last_name();
+$user_id = get_user_id();
+$db = getDB();
+$stmt = $db->prepare('SELECT id, account_number, account_type, modified, balance FROM Accounts WHERE user_id = ? ORDER BY modified DESC LIMIT 5');
+$stmt->execute([$user_id]);
+$accounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$totalBalance = 0;
+foreach ($accounts as $account) {
+    if (isset($account['balance'])) {
+        $totalBalance += $account['balance'];
+    }
+}
+
 ?>
 <form method="POST" onsubmit="return validate(this);">
+    <div class="mb-3">
+        <label for="total_balance">Total Balance:</label>
+        <input type="text" id="total_balance" name="total_balance" value="<?= number_format($totalBalance, 2) ?>" readonly>
+    </div>
     <div class="mb-3">
         <label for="email">Email</label>
         <input type="email" name="email" id="email" value="<?php se($email); ?>" />

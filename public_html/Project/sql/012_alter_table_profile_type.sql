@@ -1,0 +1,2 @@
+ALTER TABLE `Users`
+ADD COLUMN `profile_type` VARCHAR(50) DEFAULT NULL;
