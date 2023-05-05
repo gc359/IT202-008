@@ -9,7 +9,7 @@ is_logged_in(true);
 $user_id = get_user_id();
 $db = getDB();
 // Query the database for the user's accounts
-$stmt = $db->prepare('SELECT account_number, account_type, modified, balance FROM Accounts WHERE user_id = ? ORDER BY modified DESC LIMIT 5');
+$stmt = $db->prepare('SELECT id, account_number, account_type, modified, balance FROM Accounts WHERE user_id = ? ORDER BY modified DESC LIMIT 5');
 $stmt->execute([$user_id]);
 $accounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -33,6 +33,7 @@ $accounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th>Account Type</th>
                 <th>Last Modified</th>
                 <th>Balance</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -42,6 +43,7 @@ $accounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?= $account['account_type'] ?></td>
                     <td><?= $account['modified'] ?></td>
                     <td><?= number_format($account['balance'], 2) ?></td>
+                    <td><a href="transaction_history.php?account_id=<?= $account['id'] ?>">View Transactions</a></td>
                 </tr>
             <?php endforeach ?>
         </tbody>
