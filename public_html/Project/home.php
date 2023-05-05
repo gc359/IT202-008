@@ -1,5 +1,6 @@
 <?php
-require(__DIR__ . "/../../partials/nav.php");
+require_once(__DIR__ . "/../../partials/nav.php");
+is_logged_in(true);
 ?>
 <h1>Home</h1>
 <?php
