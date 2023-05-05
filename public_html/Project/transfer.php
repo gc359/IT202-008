@@ -21,10 +21,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$dest_account_id, get_user_id()]);
     $dest_account = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    if ($src_account_id === $dest_account_id) {
+      flash('Cannot transfer to the same account', 'danger');
+      return;
+    }
     if (!$src_account || !$dest_account) {
-        flash('Invalid accounts selected');
+      flash('Invalid accounts selected');
+      return;
     } else if ($src_account['balance'] < $amount) {
-        flash('Insufficient funds');
+      flash('Insufficient funds');
+      return;
     } else {
         $src_new_balance = $src_account['balance'] - $amount;
         $dest_new_balance = $dest_account['balance'] + $amount;
@@ -48,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 ?>
-<h1>Transfer Between Accounts</h1>
+<h1>Internal Transfer Between Accounts</h1>
 
 <form method="POST">
   <label for="from_account">From Account:</label>
