@@ -17,7 +17,7 @@ if (isset($_POST['create_account'])) {
   
   // Check the result and redirect to the Accounts page if successful
   if ($result === 'Success: Account created successfully.') {
-    header('Location: accounts.php');
+    header('Location: my_accounts.php');
     exit;
   } else {
     echo $result;
@@ -93,7 +93,7 @@ function create_checking_account($user_id) {
         $db->commit();
 
         // Redirect the user to their Accounts page
-        header('Location: accounts.php');
+        header('Location: my_accounts.php');
         flash('Success: Account created successfully.');
         exit();
 
