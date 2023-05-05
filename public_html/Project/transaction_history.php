@@ -1,38 +1,32 @@
 <?php
 require_once(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
+?>
 
-// Get account number from URL parameter
-if (isset($_GET['account_number'])) {
-    $account_number = $_GET['account_number'];
+
+<?php
+// Get account id from URL parameter
+if (isset($_GET['account_id'])) {
+    $account_id = $_GET['account_id'];
 } else {
     // Handle the error case
-    $account_number = null; // Or set a default value
+    $account_id = null; // Or set a default value
 }
 
-
-// Get account details
 $db = getDB();
-$stmt = $db->prepare('SELECT * FROM Accounts WHERE account_number = ?');
-$stmt->execute([$account_number]);
+// Query the database for the account details
+$stmt = $db->prepare('SELECT account_number, account_type, balance FROM Accounts WHERE id = ? AND user_id = ?');
+$stmt->execute([$account_id, get_user_id()]);
 $account = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Get transaction history for account
-$stmt = $db->prepare('SELECT Transactions.id, 
-account_src.account_number AS src_account_number, 
-account_dest.account_number AS dest_account_number, 
-balance_change, 
-transaction_type, 
-memo, 
-expected_total, 
-Transactions.created 
-FROM Transactions 
-JOIN Accounts AS account_src ON Transactions.account_src = account_src.id 
-JOIN Accounts AS account_dest ON Transactions.account_dest = account_dest.id 
-WHERE account_src.account_number = ? OR account_dest.account_number = ? 
-ORDER BY Transactions.created DESC 
-LIMIT 10');
-$stmt->execute([$account_number, $account_number]);
+// Query the database for the transaction history
+$stmt = $db->prepare('SELECT Transactions.*, src.account_number AS src_account_number, dest.account_number AS dest_account_number FROM Transactions 
+    JOIN Accounts AS src ON Transactions.account_src = src.id 
+    JOIN Accounts AS dest ON Transactions.account_dest = dest.id 
+    WHERE src.id = ? OR dest.id = ? 
+    ORDER BY Transactions.created DESC 
+    LIMIT 10');
+$stmt->execute([$account_id, $account_id]);
 $transactions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -45,17 +39,15 @@ $transactions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-<h1>Transaction History for Account <?php echo isset($account['account_number']) ? $account['account_number'] : '' ?></h1>
+<h1>Transaction History for Account <?= isset($account['account_number']) ? $account['account_number'] : '' ?></h1>
 
-
-<?php if (isset($account) && $account !== false): ?>
+<?php if ($account) : ?>
     <h2>Account Details</h2>
     <ul>
         <li>Account Type: <?= $account['account_type'] ?></li>
-        <li>Balance: <?= $account['balance'] !== null ? number_format($account['balance'], 2) : '' ?></li>
-        <li>Opened: <?= $account['created'] ?></li>
+        <li>Balance: <?= number_format($account['balance'], 2) ?></li>
     </ul>
-<?php else: ?>
+<?php else : ?>
     <p>Account not found.</p>
 <?php endif; ?>
 
