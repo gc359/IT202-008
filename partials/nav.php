@@ -31,6 +31,11 @@ session_start();
     <ul>
         <?php if (is_logged_in()) : ?>
             <li><a href="<?php echo get_url('home.php'); ?>">Home</a></li>
+            <li><a href="<?php echo get_url('get_or_create_account.php'); ?>">Create Account</a></li>
+            <li><a href="<?php echo get_url('my_accounts.php'); ?>">My Accounts</a></li>
+            <li><a href="<?php echo get_url('deposit.php'); ?>">Deposit</a></li>
+            <li><a href="<?php echo get_url('withdraw.php'); ?>">Withdraw</a></li>
+            <li><a href="<?php echo get_url('transfer.php'); ?>">Transfer</a></li>
             <li><a href="<?php echo get_url('profile.php'); ?>">Profile</a></li>
         <?php endif; ?>
         <?php if (!is_logged_in()) : ?>
