@@ -1,9 +1,9 @@
 # Project Name: Bank
-## Project Summary: (Copy from proposal)
-## Github Link: (Prod Branch of Project Folder)
-## Project Board Link: 
-## Website Link: (Heroku Prod of Project folder)
-## Your Name:
+## Project Summary: This project will create a bank simulation for users. They’ll be able to have various accounts, do standard bank functions like deposit, withdraw, internal (user’s accounts)/external(other user’s accounts) transfers, and creating/closing accounts.
+## Github Link: https://github.com/gc359/IT202-008/tree/prod
+## Project Board Link: https://github.com/users/gc359/projects/4
+## Website Link: https://gc359-prod.herokuapp.com/Project/login.php
+## Your Name: Grimm Cato
 
  
  
