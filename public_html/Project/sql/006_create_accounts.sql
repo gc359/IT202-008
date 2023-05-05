@@ -1,7 +1,7 @@
 CREATE TABLE Accounts (
     id INT PRIMARY KEY AUTO_INCREMENT,
     account_number CHAR(12) UNIQUE NOT NULL,
-    user_id INT NOT NULL,
+    user_id INT NOT NULL DEFAULT -1,
     balance DECIMAL(10,2) DEFAULT 0,
     account_type VARCHAR(50) NOT NULL,
     created DATETIME DEFAULT CURRENT_TIMESTAMP,
