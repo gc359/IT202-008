@@ -32,7 +32,11 @@
   - (5/5/2023 day of completion) Feature Title: User will be able to deposit/withdraw from their account(s)
   - https://github.com/gc359/IT202-008/blob/Milestone1/public_html/Project/milestone2.md
 - Milestone 3
-  - (add link to milestone3.md from milestone3 branch)
+  - (5/5/2023 day of completion) Feature Title: User will be able to transfer between their accounts
+  - (5/5/2023 day of completion) Feature Title: Transaction History page (Same rules as the previous Milestone plus the below)
+  - (5/5/2023 day of completion) Feature Title: User’s profile page should record and show First and Last name
+  - (5/5/2023 day of completion) Feature Title: User will be able to transfer funds to another user’s account
+  - https://github.com/gc359/IT202-008/blob/Milestone1/public_html/Project/milestone3.md
 - Milestone 4
   - (add link to milestone4.md from milestone4 branch)
 - Demo Link
