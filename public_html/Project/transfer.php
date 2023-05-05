@@ -72,15 +72,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <?php endif; ?>
     <?php endforeach; ?>
   </select>
-
+  <div>
   <label for="amount">Amount:</label>
   <input type="number" id="amount" name="amount" min="1" step="0.01" required>
-
+      </div>
+      <div>
   <label for="memo">Memo:</label>
   <input type="text" id="memo" name="memo">
-
+      </div>
+      <div>
   <button type="submit" name="submit">Submit</button>
-</form>
+      </div>
+  <div>
+    <a href="external_transfer.php" class="btn btn-primary">External Transfer</a>
+  </div>
 
 
 <?php require(__DIR__ . "/../../partials/flash.php"); ?>
