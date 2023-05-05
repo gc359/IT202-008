@@ -34,7 +34,7 @@ function generate_account_number() {
     $db = getDB();
     
     // Generate a random 12 character account number
-    $account_number = substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 12);
+    $account_number = sprintf('%012d', rand(0, 999999999999));
     
     // Check if the account number already exists in the database
     $stmt = $db->prepare('SELECT COUNT(*) FROM Accounts WHERE account_number = ?');
@@ -43,7 +43,7 @@ function generate_account_number() {
     
     // If the account number already exists, regenerate and check again
     while ($count > 0) {
-        $account_number = substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 12);
+        $account_number = sprintf('%012d', rand(0, 999999999999));
         $stmt->execute([$account_number]);
         $count = $stmt->fetchColumn();
     }

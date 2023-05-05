@@ -4,6 +4,8 @@ is_logged_in(true);
 ?>
 <?php
 if (isset($_POST["save"])) {
+    $first_name = se($_POST, "first_name", null, false);
+    $last_name = se($_POST, "last_name", null, false);
     $email = se($_POST, "email", null, false);
     $username = se($_POST, "username", null, false);
     $hasError = false;
@@ -18,10 +20,24 @@ if (isset($_POST["save"])) {
         flash("Username must only contain 3-16 characters a-z, 0-9, _, or -", "danger");
         $hasError = true;
     }
+    if (!ctype_alpha($first_name)) {
+        flash("First name must contain only letters", "danger");
+        $hasError = true;
+    }
+    if (!ctype_alpha($last_name)) {
+        flash("Last name must contain only letters", "danger");
+        $hasError = true;
+    }
     if (!$hasError) {
-        $params = [":email" => $email, ":username" => $username, ":id" => get_user_id()];
+        $params = [
+            ":email" => $email,
+            ":username" => $username,
+            ":first_name" => $first_name,
+            ":last_name" => $last_name,
+            ":id" => get_user_id()
+        ];
         $db = getDB();
-        $stmt = $db->prepare("UPDATE Users set email = :email, username = :username where id = :id");
+        $stmt = $db->prepare("UPDATE Users set email = :email, username = :username, first_name = :first_name, last_name = :last_name where id = :id");
         try {
             $stmt->execute($params);
             flash("Profile saved", "success");
@@ -29,7 +45,7 @@ if (isset($_POST["save"])) {
             users_check_duplicate($e->errorInfo);
         }
         //select fresh data from table
-        $stmt = $db->prepare("SELECT id, email, username from Users where id = :id LIMIT 1");
+        $stmt = $db->prepare("SELECT id, email, username, first_name, last_name from Users where id = :id LIMIT 1");
         try {
             $stmt->execute([":id" => get_user_id()]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -37,6 +53,8 @@ if (isset($_POST["save"])) {
                 //$_SESSION["user"] = $user;
                 $_SESSION["user"]["email"] = $user["email"];
                 $_SESSION["user"]["username"] = $user["username"];
+                $_SESSION["user"]["first_name"] = $user["first_name"];
+                $_SESSION["user"]["last_name"] = $user["last_name"];
             } else {
                 flash("User doesn't exist", "danger");
             }
@@ -45,7 +63,6 @@ if (isset($_POST["save"])) {
             //echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
         }
     }
-
 
     //check/update password
     $current_password = se($_POST, "currentPassword", null, false);
@@ -88,10 +105,11 @@ if (isset($_POST["save"])) {
     }
 }
 ?>
-
 <?php
 $email = get_user_email();
 $username = get_username();
+$firstName = get_user_first_name();
+$lastName = get_user_last_name();
 ?>
 <form method="POST" onsubmit="return validate(this);">
     <div class="mb-3">
@@ -101,6 +119,14 @@ $username = get_username();
     <div class="mb-3">
         <label for="username">Username</label>
         <input type="text" name="username" id="username" value="<?php se($username); ?>" />
+    </div>
+    <div class="mb-3">
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" id="firstName" value="<?php se($firstName); ?>" />
+    </div>
+    <div class="mb-3">
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" id="lastName" value="<?php se($lastName); ?>" />
     </div>
     <!-- DO NOT PRELOAD PASSWORD -->
     <div>Password Reset</div>
@@ -119,6 +145,7 @@ $username = get_username();
     <input type="submit" value="Update Profile" name="save" />
 </form>
 
+
 <script>
     function validate(form) {
         let pw = form.newPassword.value;
@@ -135,6 +162,7 @@ $username = get_username();
         return isValid;
     }
 </script>
+
 <?php
 require_once(__DIR__ . "/../../partials/flash.php");
 ?>

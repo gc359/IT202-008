@@ -21,9 +21,22 @@
   - (5/4/2023 day of completion) Feature Title: User will be able to edit their profile
   - https://github.com/gc359/IT202-008/blob/Milestone1/public_html/Project/milestone1.md
 - Milestone 2
-  - (add link to milestone2.md from milestone2 branch)
+  - (5/5/2023 day of completion) Feature Title: Create the Accounts table
+  - (5/5/2023 day of completion) Feature Title: Create these as initial setup scripts in the sql folder
+  - (5/5/2023 day of completion) Feature Title: Create a world account in the Accounts table created above (if it doesn’t exist)
+  - (5/5/2023 day of completion) Feature Title: Create the Transactions table
+  - (5/5/2023 day of completion) Feature Title: Dashboard page
+  - (5/5/2023 day of completion) Feature Title: User will be able to create a checking account
+  - (5/5/2023 day of completion) Feature Title: User will be able to list their accounts
+  - (5/5/2023 day of completion) Feature Title: User will be able to click an account for more information (a.k.a Transaction History page)
+  - (5/5/2023 day of completion) Feature Title: User will be able to deposit/withdraw from their account(s)
+  - https://github.com/gc359/IT202-008/blob/Milestone1/public_html/Project/milestone2.md
 - Milestone 3
-  - (add link to milestone3.md from milestone3 branch)
+  - (5/5/2023 day of completion) Feature Title: User will be able to transfer between their accounts
+  - (5/5/2023 day of completion) Feature Title: Transaction History page (Same rules as the previous Milestone plus the below)
+  - (5/5/2023 day of completion) Feature Title: User’s profile page should record and show First and Last name
+  - (5/5/2023 day of completion) Feature Title: User will be able to transfer funds to another user’s account
+  - https://github.com/gc359/IT202-008/blob/Milestone1/public_html/Project/milestone3.md
 - Milestone 4
   - (add link to milestone4.md from milestone4 branch)
 - Demo Link
