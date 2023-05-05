@@ -41,6 +41,5 @@
   - (5/5/2023 day of completion) Feature Title: User can set their profile to be public or private (will need another column in Users table)
   - (5/5/2023 day of completion) Feature Title: Create a table for System Properties 
   - (5/5/2023 day of completion) Feature Title: Alter the Accounts table to include a timestamp for last_apy_calc, default to current_timestamp, and a boolean for is_active default to true
-  - https://github.com/gc359/IT202-008/blob/Milestone1/public_html/Project/milestone4.md
 - Demo Link
-  - (add youtube link to unlisted or public demo) Note you'll need to verify your youtube account to upload videos > 15mins
+  - https://youtu.be/WpZwj9Y0uUo
