@@ -19,13 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $account = $stmt->fetch(PDO::FETCH_ASSOC);
 
   if (!$account) {
-    flash('error', 'Invalid account selected');
+    flash('Invalid account selected');
   } else {
     $new_balance = $account['balance'] - $amount;
 
     // Check if balance is sufficient
     if ($new_balance < 0) {
-      flash('error', 'Insufficient funds');
+      flash('Insufficient funds');
     } else {
       // Update account balance
       $stmt = $db->prepare('UPDATE Accounts SET balance = ? WHERE id = ?');
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$new_balance, $account_id]);
     $stmt->execute([$world_account_balance, $world_account_id]);
 
-      flash('success', 'Withdrawal successful');
+      flash('Withdrawal successful');
     }
   }
 }
